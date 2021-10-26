@@ -1,14 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
+// import routes
+const userRoutes = require('./routes/user')
 
 //app
 const app = express()
 
-//routes
-app.get('/', (req, res) => {
-    res.send('Hello from node')
-})
+//routes middleware
+//user
+app.use('/api', userRoutes)
 
 //db
 mongoose.connect(process.env.DATABASE, {
